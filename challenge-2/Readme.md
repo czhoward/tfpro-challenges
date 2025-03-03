@@ -9,7 +9,7 @@ This challenge tests your understanding of Terraform Modules by requiring you to
 
 #### 1. Deploy the Resources
 
-Deploy all the resources by running `terraform apply -auto-approve`
+Deploy all the resources by running `terraform apply -auto-approve`.  The AMI is going to likely be out of date so use `aws ec2 describe-images --owners amazon`
 
 #### 2. Replace Hard Coded Value with Data Source
 
