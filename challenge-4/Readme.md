@@ -3,6 +3,15 @@
 
 This challenge tests your ability to work with external data files, loop through data, and dynamically create AWS resources using Terraform.
 
+Note you will need to update the AMI values in the CSV file.  Get IDs with
+
+```
+aws ec2 describe-images --owners amazon \
+--filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" \
+          "Name=state,Values=available" \
+--query "Images[*].{ID:ImageId,Name:Name,CreationDate:CreationDate}" \
+--output table
+```
 
 ### Task 1 - Create EC2 instance
 
