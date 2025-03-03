@@ -9,7 +9,15 @@ This challenge tests your understanding of Terraform Modules by requiring you to
 
 #### 1. Deploy the Resources
 
-Deploy all the resources by running `terraform apply -auto-approve`.  The AMI is going to likely be out of date so use `aws ec2 describe-images --owners amazon`
+Deploy all the resources by running `terraform apply -auto-approve`.  The AMI is going to likely be out of date so use 
+
+```sh
+aws ec2 describe-images --owners amazon \
+--filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" \
+          "Name=state,Values=available" \
+--query "Images[*].{ID:ImageId,Name:Name,CreationDate:CreationDate}" \
+--output table
+```
 
 #### 2. Replace Hard Coded Value with Data Source
 
